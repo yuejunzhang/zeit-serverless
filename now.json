@@ -7,7 +7,7 @@
     }
   },
   "routes": [
-    { "src": "/api/version", "dest": "api/version_go.go" },
+    { "src": "/conversation", "dest": "api/version_go.go" },
     { "src": "/", "dest": "index.html" },
     { "src": "/api", "dest": "index.html" }
   ]
