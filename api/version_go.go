@@ -44,7 +44,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	request, err = fhttp.NewRequest(request_method, url, r.Body)
 	if err != nil {
-		fmt.Fprintf(w, "<h1>error!</h1>")
+		fmt.Fprintf(w, "<pre>%v</pre>", request)
 		return
 	}
 	request.Header.Set("Host", "chat.openai.com")
@@ -65,7 +65,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	response, err = client.Do(request)
 	if err != nil {
-		fmt.Fprintf(w, "<h1>error!</h1>")
+		fmt.Fprintf(w, "<pre>%v</pre>", request)
 		return
 	}
 	defer response.Body.Close()
