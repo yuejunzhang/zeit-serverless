@@ -5,8 +5,7 @@ go 1.20
 require (
 	github.com/bogdanfinn/fhttp v0.5.20
 	github.com/bogdanfinn/tls-client v1.3.9
-	github.com/fvbock/endless v0.0.0-20170109170031-447134032cb6
-	github.com/gin-gonic/gin v1.9.0
+
 )
 
 require (
@@ -14,7 +13,7 @@ require (
 	github.com/bogdanfinn/utls v1.5.16 // indirect
 	github.com/bytedance/sonic v1.8.0 // indirect
 	github.com/chenzhuoyu/base64x v0.0.0-20221115062448-fe3a3abad311 // indirect
-	github.com/gin-contrib/sse v0.1.0 // indirect
+
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/go-playground/validator/v10 v10.11.2 // indirect
