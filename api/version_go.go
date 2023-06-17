@@ -6,7 +6,8 @@ import (
 	"io"
 	"fmt"
 	"log"
-	http "github.com/bogdanfinn/fhttp"
+	"net/http"
+	fhttp "github.com/bogdanfinn/fhttp"
 	tls_client "github.com/bogdanfinn/tls-client"
 
 
@@ -24,19 +25,19 @@ var (
 	user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
 	
 )
-func Handler(w http.Response, r *http.Request) {
+func Handler(w http.ResponseWriter, r *http.Request) {
 		 
 
 	var url string
 	var err error
 	var request_method string
-	var request *http.Request
-	var response *http.Response
+	var request *fhttp.Request
+	var response *fhttp.Response
 
 
 	request_method = r.Method
 
-	request, err = http.NewRequest(request_method, url, r.Body)
+	request, err = fhttp.NewRequest(request_method, url, r.Body)
 	if err != nil {
 		fmt.Fprintf(w, "<h1>error!</h1>")
 		return
