@@ -34,6 +34,11 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	var request *fhttp.Request
 	var response *fhttp.Response
 
+	if r.URL.RawQuery != "" {
+		url = "https://chat.openai.com/backend-api" + r.URL.Path + "?" + r.URL.RawQuery
+	} else {
+		url = "https://chat.openai.com/backend-api" + r.URL.Path
+	}
 
 	request_method = r.Method
 
