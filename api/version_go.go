@@ -5,6 +5,7 @@ import (
 	"io"
 	"log"
 	"os"
+	"fmt"
 
 	http "github.com/bogdanfinn/fhttp"
 	tls_client "github.com/bogdanfinn/tls-client"
