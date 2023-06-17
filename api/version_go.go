@@ -33,14 +33,10 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	var request *http.Request
 	var response *http.Response
 
-	if c.Request.URL.RawQuery != "" {
-		url = "https://chat.openai.com/backend-api" + c.Param("path") + "?" + c.Request.URL.RawQuery
-	} else {
-		url = "https://chat.openai.com/backend-api" + c.Param("path")
-	}
-	request_method = c.Request.Method
 
-	request, err = http.NewRequest(request_method, url, c.Request.Body)
+	request_method = r.Method
+
+	request, err = http.NewRequest(request_method, url, r.Body)
 	if err != nil {
 		fmt.Fprintf(w, "<h1>error!</h1>")
 		return
