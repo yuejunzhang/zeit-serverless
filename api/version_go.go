@@ -25,6 +25,47 @@ var (
 	
 )
 func Handler(w http.ResponseWriter, r *http.Request) {
+		 
+
+	var url string
+	var err error
+	var request_method string
+	var request *http.Request
+	var response *http.Response
+
+	if c.Request.URL.RawQuery != "" {
+		url = "https://chat.openai.com/backend-api" + c.Param("path") + "?" + c.Request.URL.RawQuery
+	} else {
+		url = "https://chat.openai.com/backend-api" + c.Param("path")
+	}
+	request_method = c.Request.Method
+
+	request, err = http.NewRequest(request_method, url, c.Request.Body)
+	if err != nil {
+		fmt.Fprintf(w, "<h1>error!</h1>")
+		return
+	}
+	request.Header.Set("Host", "chat.openai.com")
+	request.Header.Set("Origin", "https://chat.openai.com/chat")
+	request.Header.Set("Connection", "keep-alive")
+	request.Header.Set("Content-Type", "application/json")
+	request.Header.Set("Keep-Alive", "timeout=360")
+	request.Header.Set("Authorization", c.Request.Header.Get("Authorization"))
+	request.Header.Set("sec-ch-ua", "\"Chromium\";v=\"112\", \"Brave\";v=\"112\", \"Not:A-Brand\";v=\"99\"")
+	request.Header.Set("sec-ch-ua-mobile", "?0")
+	request.Header.Set("sec-ch-ua-platform", "\"Linux\"")
+	request.Header.Set("sec-fetch-dest", "empty")
+	request.Header.Set("sec-fetch-mode", "cors")
+	request.Header.Set("sec-fetch-site", "same-origin")
+	request.Header.Set("sec-gpc", "1")
+	request.Header.Set("user-agent", user_agent)
+ 
+
+	response, err = client.Do(request)
+	if err != nil {
+		fmt.Fprintf(w, "<h1>error!</h1>")
+		return
+	}
   fmt.Fprintf(w, "<h1>Hello from Go!</h1>")
 	
 }
