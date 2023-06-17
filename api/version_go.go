@@ -3,8 +3,7 @@ package handler
 
 import (
 	
-	"log"
-	"os"
+
 	"fmt"
 
 	http "github.com/bogdanfinn/fhttp"
