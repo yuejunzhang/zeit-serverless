@@ -5,7 +5,7 @@ import (
 	
 
 	"fmt"
-
+	"net/http"
 	http "github.com/bogdanfinn/fhttp"
 	tls_client "github.com/bogdanfinn/tls-client"
 
