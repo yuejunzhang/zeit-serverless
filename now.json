@@ -9,6 +9,5 @@
   "routes": [
     { "src": "/conversation", "dest": "api/version_go.go" },
     { "src": "/", "dest": "index.html" },
-    { "src": "/api", "dest": "index.html" }
   ]
 }
