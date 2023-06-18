@@ -16,9 +16,11 @@ var (
 	jar     = tls_client.NewCookieJar()
 	options = []tls_client.HttpClientOption{
 		tls_client.WithTimeoutSeconds(360),
-		tls_client.WithClientProfile(tls_client.Chrome_112),
+		//tls_client.WithClientProfile(tls_client.Chrome_112),
+		tls_client.WithClientProfile(tls_client.Firefox_110),
 		tls_client.WithNotFollowRedirects(),
 		tls_client.WithCookieJar(jar), // create cookieJar instance and pass it as argument
+		tls_client.WithInsecureSkipVerify(),
 	}
 	client, _  = tls_client.NewHttpClient(tls_client.NewNoopLogger(), options...)
 	user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
@@ -64,7 +66,8 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	request.Header.Set("user-agent", user_agent)
  	//request.Header.Set("Accept",text/event-stream)
 	if os.Getenv("PUID") != "" {
-		request.AddCookie(&fhttp.Cookie{Name: "_puid", Value: os.Getenv("PUID")})
+		// request.AddCookie(&fhttp.Cookie{Name: "_puid", Value: os.Getenv("PUID")})
+		request.Header.Set("Cookie", "_puid="+os.Getenv("PUID")+";")
 	}
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	response, err = client.Do(request)
