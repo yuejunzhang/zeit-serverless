@@ -10,6 +10,7 @@ import (
 	"net/http"
 	fhttp "github.com/bogdanfinn/fhttp"
 	tls_client "github.com/bogdanfinn/tls-client"
+	"./chatgpt"
 )
 
 var (
