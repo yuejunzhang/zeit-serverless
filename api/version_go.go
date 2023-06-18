@@ -75,7 +75,9 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	// Get status code
 	w.WriteHeader(response.StatusCode)
-
+		fmt.Fprintf(w, "<h1>ok creating request: %v</h1>", err)
+		fmt.Fprintf(w, "<h2>Request:</h2>")
+		fmt.Fprintf(w, "<pre>%v</pre>", request)
 
 	buf := make([]byte, 4096)
 	for {
