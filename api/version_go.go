@@ -53,20 +53,20 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	request.Header.Set("Content-Type", "application/json")
 	request.Header.Set("Keep-Alive", "timeout=360")
 	request.Header.Set("Authorization", r.Header.Get("Authorization"))
-	//request.Header.Set("sec-ch-ua", "\"Chromium\";v=\"112\", \"Brave\";v=\"112\", \"Not:A-Brand\";v=\"99\"")
-	//request.Header.Set("sec-ch-ua-mobile", "?0")
-	//request.Header.Set("sec-ch-ua-platform", "\"Linux\"")
+	request.Header.Set("sec-ch-ua", "\"Chromium\";v=\"112\", \"Brave\";v=\"112\", \"Not:A-Brand\";v=\"99\"")
+	request.Header.Set("sec-ch-ua-mobile", "?0")
+	request.Header.Set("sec-ch-ua-platform", "\"Linux\"")
 	request.Header.Set("sec-fetch-dest", "empty")
 	request.Header.Set("sec-fetch-mode", "cors")
 	request.Header.Set("sec-fetch-site", "same-origin")
-	//request.Header.Set("sec-gpc", "1")
+	request.Header.Set("sec-gpc", "1")
 	request.Header.Set("user-agent", user_agent)
- 	//request.Header.Set("Accept",text/event-stream)
+ 	request.Header.Set("Accept",text/event-stream)
 
 	response, err = client.Do(request)
 	if err != nil {
 		fmt.Fprintf(w, "<h1>Error creating request: %v</h1>", err)
-		fmt.Fprintf(w, "<h2>Request:</h2>")
+		fmt.Fprintf(w, "<h2>Request:=========</h2>")
 		fmt.Fprintf(w, "<pre>%v</pre>", request)
 		return
 	}
@@ -78,27 +78,28 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Methods", "*")
 	// Get status code
 	w.WriteHeader(response.StatusCode)
+	statusText := http.StatusText(response.StatusCode)
+	w.Write([]byte("Response Status Code: " + strconv.Itoa(response.StatusCode)
 
-
-	buf := make([]byte, 4096)
-	for {
-		n, err := response.Body.Read(buf)
-		if n > 0 {
-			_, writeErr :=w.Write(buf[:n])
-			if writeErr != nil {
-				log.Printf("Error writing to client: %v", writeErr)
-				break
-			}
+	// buf := make([]byte, 4096)
+	// for {
+	// 	n, err := response.Body.Read(buf)
+	// 	if n > 0 {
+	// 		_, writeErr :=w.Write(buf[:n])
+	// 		if writeErr != nil {
+	// 			log.Printf("Error writing to client: %v", writeErr)
+	// 			break
+	// 		}
 			 
-		}
-		if err == io.EOF {
-			break
-		}
-		if err != nil {
-			log.Printf("Error reading from response body: %v", err)
-			break
-		}
-	}
+	// 	}
+	// 	if err == io.EOF {
+	// 		break
+	// 	}
+	// 	if err != nil {
+	// 		log.Printf("Error reading from response body: %v", err)
+	// 		break
+	// 	}
+	// }
 
 
 
