@@ -76,8 +76,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Headers", "*")
 	w.Header().Set("Access-Control-Allow-Methods", "*")
-	statusText := http.StatusText(response.StatusCode)
-	w.Write([]byte("Response Status Code: " + strconv.Itoa(response.StatusCode)
+
 	// Get status code
 	w.WriteHeader(response.StatusCode)
 
@@ -106,7 +105,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 
 	
-//fmt.Fprintf(w, url)
+fmt.Fprintf(w, url)
 	
 }
 
