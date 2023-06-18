@@ -61,7 +61,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	request.Header.Set("sec-fetch-site", "same-origin")
 	request.Header.Set("sec-gpc", "1")
 	request.Header.Set("user-agent", user_agent)
- 
+ 	//request.Header.Set("Accept",text/event-stream)
 
 	response, err = client.Do(request)
 	if err != nil {
@@ -73,7 +73,9 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	defer response.Body.Close()
 	w.Header().Set("Content-Type", response.Header.Get("Content-Type"))
-
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "*")
 	// Get status code
 	w.WriteHeader(response.StatusCode)
 
