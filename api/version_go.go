@@ -109,7 +109,10 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 
 	statusText := http.StatusText(response.StatusCode)
-fmt.Fprintf(w, url+statusText)
+	fmt.Fprintf(w, url+statusText)
+	fmt.Fprintf(w, "<h1>response: %v</h1>", err)
+	fmt.Fprintf(w, "<h2>response:</h2>")
+	fmt.Fprintf(w, "<pre>%v</pre>", response)	
 	
 }
 
