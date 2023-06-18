@@ -4,6 +4,7 @@ package handler
 import (
 	
 	"io"
+	"os"
 	"fmt"
 	"log"
 	"net/http"
@@ -63,8 +64,9 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	request.Header.Set("user-agent", user_agent)
  	//request.Header.Set("Accept",text/event-stream)
 	if os.Getenv("PUID") != "" {
-		request.AddCookie(&http.Cookie{Name: "_puid", Value: os.Getenv("PUID")})
+		request.AddCookie(&fhttp.Cookie{Name: "_puid", Value: os.Getenv("PUID")})
 	}
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	response, err = client.Do(request)
 	if err != nil {
 		fmt.Fprintf(w, "<h1>Error creating request: %v</h1>", err)
@@ -82,7 +84,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	// Get status code
 	w.WriteHeader(response.StatusCode)
 
-
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	buf := make([]byte, 4096)
 	for {
 		n, err := response.Body.Read(buf)
