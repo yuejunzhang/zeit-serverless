@@ -76,31 +76,31 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Headers", "*")
 	w.Header().Set("Access-Control-Allow-Methods", "*")
-	//statusText := http.StatusText(response.StatusCode)
-	//w.Write([]byte("Response Status Code: " + strconv.Itoa(response.StatusCode)
+	statusText := http.StatusText(response.StatusCode)
+	w.Write([]byte("Response Status Code: " + strconv.Itoa(response.StatusCode)
 	// Get status code
 	w.WriteHeader(response.StatusCode)
 
 
-	buf := make([]byte, 4096)
-	for {
-		n, err := response.Body.Read(buf)
-		if n > 0 {
-			_, writeErr :=w.Write(buf[:n])
-			if writeErr != nil {
-				log.Printf("Error writing to client: %v", writeErr)
-				break
-			}
+	// buf := make([]byte, 4096)
+	// for {
+	// 	n, err := response.Body.Read(buf)
+	// 	if n > 0 {
+	// 		_, writeErr :=w.Write(buf[:n])
+	// 		if writeErr != nil {
+	// 			log.Printf("Error writing to client: %v", writeErr)
+	// 			break
+	// 		}
 			 
-		}
-		if err == io.EOF {
-			break
-		}
-		if err != nil {
-			log.Printf("Error reading from response body: %v", err)
-			break
-		}
-	}
+	// 	}
+	// 	if err == io.EOF {
+	// 		break
+	// 	}
+	// 	if err != nil {
+	// 		log.Printf("Error reading from response body: %v", err)
+	// 		break
+	// 	}
+	// }
 
 
 
