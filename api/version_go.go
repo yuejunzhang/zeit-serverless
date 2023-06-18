@@ -10,6 +10,10 @@ import (
 	"net/http"
 	fhttp "github.com/bogdanfinn/fhttp"
 	tls_client "github.com/bogdanfinn/tls-client"
+	//"freechatgpt/internal/chatgpt"
+	//"freechatgpt/internal/tokens"
+	typings "freechatgpt/internal/typings"
+	"freechatgpt/internal/typings/responses"
 	"./chatgpt"
 )
 
