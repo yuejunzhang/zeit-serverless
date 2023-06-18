@@ -78,6 +78,9 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "<h1>ok creating request: %v</h1>", err)
 		fmt.Fprintf(w, "<h2>Request:</h2>")
 		fmt.Fprintf(w, "<pre>%v</pre>", request)
+		fmt.Fprintf(w, "<h1>ok creating response: %v</h1>", err)
+		fmt.Fprintf(w, "<h2>response:</h2>")
+		fmt.Fprintf(w, "<pre>%v</pre>", response)
 
 	buf := make([]byte, 4096)
 	for {
