@@ -13,7 +13,7 @@ import (
 	
 	"bufio"
 	"encoding/json"
-	chatgpt "./internal/chatgpt"
+	"./internal/chatgpt"
 	//"./internal/tokens"
 	"./internal/typings/responses"
 	typings "./internal/typings"
