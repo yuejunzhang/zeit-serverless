@@ -1,7 +1,7 @@
 package chatgpt
 
 import (
-	typings "freechatgpt/internal/typings"
+	typings "./internal/typings"
 	"strings"
 )
 
