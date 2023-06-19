@@ -1,9 +1,9 @@
 {
   "version": 2,
+  "type": "serverless",
   "functions": {
     "api/version_go.go": {
-      "maxDuration": 5,
-
+      "maxDuration": 5
     }
   },
   "routes": [
