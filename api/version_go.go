@@ -13,10 +13,10 @@ import (
 	
 	"bufio"
 	"encoding/json"
-	"./internal/chatgpt"
+	"api/internal/chatgpt"
 	//"./internal/tokens"
-	"./internal/typings/responses"
-	typings "./internal/typings"
+	"api/internal/typings/responses"
+	typings "api/internal/typings"
 )
 
 // var (
