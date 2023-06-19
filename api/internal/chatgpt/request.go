@@ -25,50 +25,50 @@ var (
 		tls_client.WithInsecureSkipVerify(),
 	}
 	client, _         = tls_client.NewHttpClient(tls_client.NewNoopLogger(), options...)
-	http_proxy        = os.Getenv("http_proxy")
-	API_REVERSE_PROXY = os.Getenv("API_REVERSE_PROXY")
+	// http_proxy        = os.Getenv("http_proxy")
+	// API_REVERSE_PROXY = os.Getenv("API_REVERSE_PROXY")
 )
 
-func init() {
-	// Check for proxies.txt
-	if _, err := os.Stat("proxies.txt"); err == nil {
-		// Each line is a proxy, put in proxies array
-		file, _ := os.Open("proxies.txt")
-		defer file.Close()
-		scanner := bufio.NewScanner(file)
-		for scanner.Scan() {
-			// Split line by :
-			proxy := scanner.Text()
-			proxy_parts := strings.Split(proxy, ":")
-			if len(proxy_parts) == 2 {
-				proxy = "socks5://" + proxy
-			} else if len(proxy_parts) == 4 {
-				proxy = "socks5://" + proxy_parts[2] + ":" + proxy_parts[3] + "@" + proxy_parts[0] + ":" + proxy_parts[1]
-			} else {
-				continue
-			}
-			proxies = append(proxies, proxy)
-		}
-	}
-}
+// func init() {
+// 	// Check for proxies.txt
+// 	if _, err := os.Stat("proxies.txt"); err == nil {
+// 		// Each line is a proxy, put in proxies array
+// 		file, _ := os.Open("proxies.txt")
+// 		defer file.Close()
+// 		scanner := bufio.NewScanner(file)
+// 		for scanner.Scan() {
+// 			// Split line by :
+// 			proxy := scanner.Text()
+// 			proxy_parts := strings.Split(proxy, ":")
+// 			if len(proxy_parts) == 2 {
+// 				proxy = "socks5://" + proxy
+// 			} else if len(proxy_parts) == 4 {
+// 				proxy = "socks5://" + proxy_parts[2] + ":" + proxy_parts[3] + "@" + proxy_parts[0] + ":" + proxy_parts[1]
+// 			} else {
+// 				continue
+// 			}
+// 			proxies = append(proxies, proxy)
+// 		}
+// 	}
+// }
 
 func random_int(min int, max int) int {
 	return min + rand.Intn(max-min)
 }
 
 func SendRequest(message ChatGPTRequest, access_token string) (*http.Response, error) {
-	if http_proxy != "" && len(proxies) == 0 {
-		client.SetProxy(http_proxy)
-	}
-	// Take random proxy from proxies.txt
-	if len(proxies) > 0 {
-		client.SetProxy(proxies[random_int(0, len(proxies))])
-	}
+	// if http_proxy != "" && len(proxies) == 0 {
+	// 	client.SetProxy(http_proxy)
+	// }
+	// // Take random proxy from proxies.txt
+	// if len(proxies) > 0 {
+	// 	client.SetProxy(proxies[random_int(0, len(proxies))])
+	// }
 
-	apiUrl := "https://chat.openai.com/backend-api/conversation"
-	if API_REVERSE_PROXY != "" {
-		apiUrl = API_REVERSE_PROXY
-	}
+	// apiUrl := "https://chat.openai.com/backend-api/conversation"
+	// if API_REVERSE_PROXY != "" {
+	// 	apiUrl = API_REVERSE_PROXY
+	// }
 
 	// JSONify the body and add it to the request
 	body_json, err := json.Marshal(message)
