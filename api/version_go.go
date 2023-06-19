@@ -13,10 +13,10 @@ import (
 	
 	"bufio"
 	"encoding/json"
-	"freechatgpt/internal/chatgpt"
-	"freechatgpt/internal/tokens"
-	typings "freechatgpt/internal/typings"
-	"freechatgpt/internal/typings/responses"
+	"./internal/chatgpt"
+	"./internal/tokens"
+	typings "./internal/typings"
+	"./internal/typings/responses"
 	//"./chatgpt"
 )
 
