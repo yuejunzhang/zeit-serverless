@@ -3,11 +3,11 @@
   "functions": {
     "api/version_go.go": {
       "maxDuration": 5,
-      "includeFiles": "data/data.db"
+
     }
   },
   "routes": [
-    { "src": "/conversation", "dest": "api/version_go.go" },
+    { "src": "/v1/chat/completions", "dest": "api/version_go.go" },
     { "src": "/", "dest": "index.html" }
   ]
 }
