@@ -13,10 +13,10 @@ import (
 	
 	"bufio"
 	"encoding/json"
-	"zeit-serverless/api/internal/chatgpt"
+	"./internal/chatgpt"
 	//"./internal/tokens"
-	"zeit-serverless/api/internal/typings/responses"
-	typings "zeit-serverless/api/internal/typings"
+	"./nternal/typings/responses"
+	typings "./internal/typings"
 )
 
 // var (
