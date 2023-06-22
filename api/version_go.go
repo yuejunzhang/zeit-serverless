@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 	// "./internal/chatgpt"
 	// "/api/internal/typings/responses"
-	// typings "./internal/typings"
+	typings "typings"
 )
 
 // var (
