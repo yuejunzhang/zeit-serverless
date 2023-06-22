@@ -3,7 +3,7 @@
 
   "functions": {
     "api/version_go.go": {
-      "maxDuration": 5
+      "maxDuration": 60
     }
   },
   "routes": [
