@@ -15,7 +15,7 @@ import (
 	"encoding/json"
 	"./internal/chatgpt"
 	//"./internal/tokens"
-	"./nternal/typings/responses"
+	"/api/nternal/typings/responses"
 	typings "./internal/typings"
 )
 
