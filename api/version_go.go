@@ -14,8 +14,7 @@ import (
 	"bufio"
 	"encoding/json"
 	"./internal/chatgpt"
-	//"./internal/tokens"
-	"/api/nternal/typings/responses"
+	"/api/internal/typings/responses"
 	typings "./internal/typings"
 )
 
